@@ -1,6 +1,6 @@
 // https://fonts.google.com/icons
 
-export enum Icon {
+export enum IconType {
   Search = "search",
   Home = "home",
   Menu = "menu",
@@ -25,6 +25,9 @@ export enum Icon {
   ArrowDropDown = "arrow_drop_down",
   MoreVert = "more_vert",
   Check = "check",
+  CreateNewFolder = "create_new_folder",
+  FileOpen = "file_open",
+  NoteAdd = "note_add",
 }
 
-export const allIcons = Object.values(Icon);
+export const allIcons = Object.values(IconType);

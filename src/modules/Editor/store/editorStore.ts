@@ -23,4 +23,12 @@ export const createEditorStore: StateCreator<AppState, [], [], EditorState> = (
   slides: [],
   addSlide: () =>
     set((state) => ({ slides: [...state.slides, generateSlide()] })),
+  addSlideSection: (slideId) =>
+    set((state) => ({
+      slides: state.slides.map((slide) =>
+        slide.id === slideId
+          ? { ...slide, sections: [...slide.sections, generateSection()] }
+          : slide
+      ),
+    })),
 });

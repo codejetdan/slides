@@ -1,22 +1,22 @@
 import { Identity } from "~/types";
 
-export interface Title {
-  text: string;
-  type: SectionElementType.Title;
-}
-
-export interface Icon {
-  icon: string;
-  type: SectionElementType.Icon;
-}
-
 export enum SectionElementType {
   Title = "title",
   Icon = "icon",
 }
 
+export interface TitleElementData {
+  text: string;
+  type: SectionElementType.Title;
+}
+
+export interface IconElementData {
+  icon: string;
+  type: SectionElementType.Icon;
+}
+
 export type SectionElement = {
-  data: Icon | Title;
+  data: IconElementData | TitleElementData;
 } & Identity;
 
 export type Section = {
@@ -30,6 +30,7 @@ export type Slide = {
 
 interface EditorActions {
   addSlide: () => void;
+  addSlideSection: (slideId: string) => void;
 }
 
 export interface EditorState extends EditorActions {

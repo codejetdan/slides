@@ -1,14 +1,24 @@
 import { RouteComponentProps } from "@reach/router";
 
-import { LoadProject } from "../components/LoadProject";
-import { NewProject } from "../components/NewProject";
+import { styled } from "~/appStyles";
 
-export const MainMenu: React.FC<RouteComponentProps> = () => {
+import { OpenProjectButton } from "../components/OpenProjectButton";
+import { NewProjectButton } from "../components/NewProjectButton";
+
+const StyledMainMenu = styled("nav", {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "100vh",
+});
+
+interface MainMenuProps extends RouteComponentProps {}
+
+export const MainMenu: React.FC<MainMenuProps> = () => {
   return (
-    <div>
-      Main Menu
-      <NewProject />
-      <LoadProject />
-    </div>
+    <StyledMainMenu>
+      <NewProjectButton />
+      <OpenProjectButton />
+    </StyledMainMenu>
   );
 };

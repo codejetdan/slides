@@ -11,9 +11,9 @@ export const { styled, css, config } = createStitches({
       red500: "hsl(352,100%,62%)",
     },
     space: {
-      small: "4px",
-      medium: "8px",
-      large: "16px",
+      small: "8px",
+      medium: "16px",
+      large: "32px",
     },
     fontSizes: {
       small: "12px",
@@ -25,7 +25,12 @@ export const { styled, css, config } = createStitches({
       bold: "700",
     },
     borderWidths: {
-      1: "1px",
+      small: "1px",
+    },
+    sizes: {
+      small: "24px",
+      medium: "32px",
+      large: "48px",
     },
   },
   utils: {},
