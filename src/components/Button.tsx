@@ -5,9 +5,9 @@ import { IconType } from "~/config";
 import { Icon } from "~/components/Icon";
 
 interface ButtonProps {
-  children?: JSX.Element | string;
+  text?: string;
   size?: "small" | "medium" | "large";
-  type?: "primary" | "secondary";
+  type?: "primary" | "secondary" | "ghost";
   icon?: IconType;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
@@ -31,6 +31,9 @@ const StyledButton = styled("button", {
       secondary: {
         backgroundColor: "$gray500",
       },
+      ghost: {
+        backgroundColor: "transparent",
+      },
     },
     size: {
       small: {
@@ -52,21 +55,28 @@ const StyledButton = styled("button", {
         paddingRight: "$large",
       },
     },
+    noText: {
+      true: {
+        "& span": {
+          marginRight: 0,
+        },
+      },
+    },
   },
 });
 
 export const Button: React.FC<ButtonProps> = ({
-  children,
+  text,
   icon,
   size = "medium",
   type = "primary",
   ...props
 }) => {
   return (
-    <StyledButton size={size} type={type} {...props}>
+    <StyledButton size={size} type={type} {...props} noText={!text}>
       <div>
         {icon && <Icon name={icon} />}
-        {children}
+        {text}
       </div>
     </StyledButton>
   );

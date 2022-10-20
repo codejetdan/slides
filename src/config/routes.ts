@@ -1,5 +1,5 @@
 export enum AppRoute {
   MainMenu = "/",
-  Editor = "/editor",
-  OpenProject = "/open",
+  Editor = "/project",
+  OpenProject = "/projects",
 }

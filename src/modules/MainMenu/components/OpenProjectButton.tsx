@@ -8,9 +8,7 @@ interface OpenProjectProps {}
 export const OpenProjectButton: React.FC<OpenProjectProps> = () => {
   return (
     <Link to={AppRoute.OpenProject}>
-      <Button size="large" icon={IconType.FileOpen}>
-        Load Project
-      </Button>
+      <Button size="large" icon={IconType.FileOpen} text="Load Project" />
     </Link>
   );
 };

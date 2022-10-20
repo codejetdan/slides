@@ -13,7 +13,7 @@ export function App() {
 
       <OpenProject path={AppRoute.OpenProject} />
 
-      <Editor path={AppRoute.Editor} />
+      <Editor path={`${AppRoute.Editor}/:projectId/:slide`} />
     </Router>
   );
 }

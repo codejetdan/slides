@@ -20,13 +20,14 @@ const generateSlide = (slideData?: Partial<Slide>): Slide => ({
 export const createEditorStore: StateCreator<AppState, [], [], EditorState> = (
   set
 ) => ({
-  slides: [],
+  projectId: nanoid(),
+  slides: [generateSlide()],
   addSlide: () =>
     set((state) => ({ slides: [...state.slides, generateSlide()] })),
-  addSlideSection: (slideId) =>
+  addSlideSection: (slideIndex) =>
     set((state) => ({
-      slides: state.slides.map((slide) =>
-        slide.id === slideId
+      slides: state.slides.map((slide, index) =>
+        index === slideIndex
           ? { ...slide, sections: [...slide.sections, generateSection()] }
           : slide
       ),

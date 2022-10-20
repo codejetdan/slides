@@ -1,25 +1,28 @@
+import { useCallback } from "react";
+
 import { useAppStore } from "~/appStore";
-import { Identity } from "~/types";
+import { Button } from "~/components/Button";
+import { ErrorAlert } from "~/components/ErrorAlert";
 
 import { Section } from "./Section";
-import { Error } from "./Error";
-import { Button } from "~/components/Button";
 
-interface SlideProps extends Identity {}
+interface SlideProps {
+  index: number;
+}
 
-export const Slide: React.FC<SlideProps> = ({ id }) => {
-  const slide = useAppStore((state) =>
-    state.slides.find((slide) => slide.id === id)
+export const Slide: React.FC<SlideProps> = ({ index }) => {
+  const slide = useAppStore(
+    useCallback((state) => state.slides[index], [index])
   );
 
   const addSlideSection = useAppStore((state) => state.addSlideSection);
-  const handleAddSectionClick = () => addSlideSection(id);
+  const handleAddSectionClick = () => addSlideSection(index);
 
-  if (!slide) return <Error message="Error loading slide" />;
+  if (!slide) return <ErrorAlert message="Error loading slide" />;
 
   return (
     <div>
-      <Button onClick={handleAddSectionClick}>Add Section</Button>
+      <Button onClick={handleAddSectionClick} text="Add Section" />
       {slide.sections.map((section) => (
         <Section key={section.id} />
       ))}

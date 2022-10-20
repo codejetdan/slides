@@ -30,9 +30,10 @@ export type Slide = {
 
 interface EditorActions {
   addSlide: () => void;
-  addSlideSection: (slideId: string) => void;
+  addSlideSection: (index: number) => void;
 }
 
 export interface EditorState extends EditorActions {
+  projectId: string;
   slides: Slide[];
 }
