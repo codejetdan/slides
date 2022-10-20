@@ -32,6 +32,16 @@ export const { styled, css, config } = createStitches({
       medium: "32px",
       large: "48px",
     },
+    borderStyles: {
+      normal: "solid",
+    },
+    radii: {
+      normal: "8px",
+      circle: "50%",
+    },
+    transitions: {
+      normal: "0.25s ease-in",
+    },
   },
   utils: {},
 });

@@ -13,12 +13,13 @@ interface ButtonProps {
 }
 
 const StyledButton = styled("button", {
-  borderRadius: 10,
+  borderRadius: "$normal",
   border: 0,
   cursor: "pointer",
   "& > div": {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
   },
   "& span": {
     marginRight: "$small",

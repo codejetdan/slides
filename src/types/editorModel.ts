@@ -31,6 +31,7 @@ export type Slide = {
 interface EditorActions {
   addSlide: () => void;
   addSlideSection: (index: number) => void;
+  removeSlideSection: (slideId: string, sectionId: string) => void;
 }
 
 export interface EditorState extends EditorActions {

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link, RouteComponentProps } from "@reach/router";
 
 import { useAppStore } from "~/appStore";
@@ -7,13 +8,30 @@ import { Button } from "~/components/Button";
 import { ErrorAlert } from "~/components/ErrorAlert";
 
 import { Slide } from "../components/Slide";
-import { useMemo } from "react";
+
+const StyledEditorMenu = styled("div", {
+  borderBottomWidth: "$small",
+  borderBottomStyle: "$normal",
+  borderBottomColor: "$gray500",
+  
+  width: "100%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+});
 
 const StyledSlideNavigationButton = styled(Button, {
-  backgroundColor: "transparent",
   position: "absolute",
-  minHeight: "48px",
-  top: "calc(50% - 24px)",
+  borderRadius: "$circle",
+  minHeight: "64px",
+  width: "64px",
+  top: "calc(50% - 32px)",
+  transition: "$normal",
+  opacity: 0.75,
+  "&:hover": {
+    transition: "$normal",
+    opacity: 1,
+  },
   variants: {
     direction: {
       previous: {
@@ -52,9 +70,6 @@ export const Editor: React.FC<EditorProps> = ({ projectId, slide }) => {
 
   return (
     <div>
-      <Button onClick={addSlide} text="Add Slide" />
-      <Button onClick={handleAddSectionClick} text="Add Section" />
-
       {shouldShowPreviousSlideButton && (
         <Link to={`${AppRoute.Editor}/${projectId}/${Number(slide) - 1}`}>
           <StyledSlideNavigationButton
@@ -75,16 +90,21 @@ export const Editor: React.FC<EditorProps> = ({ projectId, slide }) => {
         </Link>
       )}
 
-      <SlideCount>
-        Slide {slide}
-        {slides.length > 1 && ` of ${slides.length}`}
-      </SlideCount>
+      <StyledEditorMenu>
+        <Button onClick={addSlide} text="Add Slide" />
+        <Button onClick={handleAddSectionClick} text="Add Section" />
 
-      {allIcons.map((icon) => (
-        <span className="material-icons" key={icon}>
-          {icon}
-        </span>
-      ))}
+        <SlideCount>
+          Slide {slide}
+          {slides.length > 1 && ` of ${slides.length}`}
+        </SlideCount>
+
+        {allIcons.map((icon) => (
+          <span className="material-icons" key={icon}>
+            {icon}
+          </span>
+        ))}
+      </StyledEditorMenu>
 
       <Slide index={slideIndex} />
     </div>

@@ -32,4 +32,17 @@ export const createEditorStore: StateCreator<AppState, [], [], EditorState> = (
           : slide
       ),
     })),
+  removeSlideSection: (slideId, sectionId) =>
+    set((state) => ({
+      slides: state.slides.map((slide) =>
+        slide.id === slideId
+          ? {
+              ...slide,
+              sections: slide.sections.filter(
+                (section) => section.id !== sectionId
+              ),
+            }
+          : slide
+      ),
+    })),
 });
