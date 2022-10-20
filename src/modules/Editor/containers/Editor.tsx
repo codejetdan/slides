@@ -38,7 +38,7 @@ interface EditorProps
   extends RouteComponentProps<{ projectId: string; slide: string }> {}
 
 export const Editor: React.FC<EditorProps> = ({ projectId, slide }) => {
-  const { slides, addSlide } = useAppStore();
+  const { slides, addSlide, addSlideSection } = useAppStore();
 
   const slideIndex = useMemo(() => Number(slide) - 1, [slide]);
 
@@ -48,9 +48,12 @@ export const Editor: React.FC<EditorProps> = ({ projectId, slide }) => {
   if (slideIndex < 0 || slideIndex >= slides.length)
     return <ErrorAlert message="Slide doesn't exist" />;
 
+  const handleAddSectionClick = () => addSlideSection(slideIndex);
+
   return (
     <div>
       <Button onClick={addSlide} text="Add Slide" />
+      <Button onClick={handleAddSectionClick} text="Add Section" />
 
       {shouldShowPreviousSlideButton && (
         <Link to={`${AppRoute.Editor}/${projectId}/${Number(slide) - 1}`}>
