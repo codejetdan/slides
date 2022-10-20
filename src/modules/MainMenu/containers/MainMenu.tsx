@@ -2,7 +2,7 @@ import { RouteComponentProps } from "@reach/router";
 
 import { styled } from "~/appStyles";
 
-import { OpenProjectButton } from "../components/OpenProjectButton";
+// import { OpenProjectButton } from "../components/OpenProjectButton";
 import { NewProjectButton } from "../components/NewProjectButton";
 
 const StyledMainMenu = styled("nav", {

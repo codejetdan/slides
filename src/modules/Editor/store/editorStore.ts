@@ -109,7 +109,7 @@ export const createEditorStore: StateCreator<AppState, [], [], EditorState> = (
       ),
     })),
 
-    changeIcon: (slideId, sectionId, elementId, icon) =>
+  changeIcon: (slideId, sectionId, elementId, icon) =>
     set((state) => ({
       slides: state.slides.map((slide) =>
         slide.id === slideId
