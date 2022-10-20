@@ -1,3 +1,4 @@
+import { IconType } from "~/config";
 import { Identity } from "~/types";
 
 export enum SectionElementType {
@@ -11,7 +12,7 @@ export interface TitleElementData {
 }
 
 export interface IconElementData {
-  icon: string;
+  icon: IconType | string;
   type: SectionElementType.Icon;
 }
 
@@ -19,9 +20,11 @@ export type SectionElement = {
   data: IconElementData | TitleElementData;
 } & Identity;
 
+export type SectionColumns = 1 | 2 | 3 | 4;
+export type SectionElements = Array<SectionElement>;
 export type Section = {
-  columns: 1 | 2 | 3 | 4;
-  elements: Array<SectionElement & Identity>;
+  columns: SectionColumns;
+  elements: SectionElements;
 } & Identity;
 
 export type Slide = {
@@ -32,6 +35,18 @@ interface EditorActions {
   addSlide: () => void;
   addSlideSection: (index: number) => void;
   removeSlideSection: (slideId: string, sectionId: string) => void;
+  changeTitleText: (
+    slideId: string,
+    sectionId: string,
+    elementId: string,
+    text: string
+  ) => void;
+  changeIcon: (
+    slideId: string,
+    sectionId: string,
+    elementId: string,
+    icon: string
+  ) => void;
 }
 
 export interface EditorState extends EditorActions {

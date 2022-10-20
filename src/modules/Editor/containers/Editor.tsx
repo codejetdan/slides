@@ -13,19 +13,28 @@ const StyledEditorMenu = styled("div", {
   borderBottomWidth: "$small",
   borderBottomStyle: "$normal",
   borderBottomColor: "$gray500",
-  
+
   width: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  padding: "$small",
+
+  "& button": {
+    margin: "0 $small",
+  },
 });
+
+const slideNavBtnSize = 64;
 
 const StyledSlideNavigationButton = styled(Button, {
   position: "absolute",
   borderRadius: "$circle",
-  minHeight: "64px",
-  width: "64px",
-  top: "calc(50% - 32px)",
+  minHeight: `${slideNavBtnSize}px`,
+  width: `${slideNavBtnSize}px`,
+  top: `calc(50% - ${slideNavBtnSize / 2}px)`,
+  zIndex: "$slideNav",
+
   transition: "$normal",
   opacity: 0.75,
   "&:hover": {
@@ -98,12 +107,6 @@ export const Editor: React.FC<EditorProps> = ({ projectId, slide }) => {
           Slide {slide}
           {slides.length > 1 && ` of ${slides.length}`}
         </SlideCount>
-
-        {allIcons.map((icon) => (
-          <span className="material-icons" key={icon}>
-            {icon}
-          </span>
-        ))}
       </StyledEditorMenu>
 
       <Slide index={slideIndex} />

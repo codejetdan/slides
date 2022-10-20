@@ -14,6 +14,8 @@ export const { styled, css, config } = createStitches({
       small: "8px",
       medium: "16px",
       large: "32px",
+      xLarge: "64px",
+      xxLarge: "96px",
     },
     fontSizes: {
       small: "12px",
@@ -41,6 +43,9 @@ export const { styled, css, config } = createStitches({
     },
     transitions: {
       normal: "0.25s ease-in",
+    },
+    zIndices: {
+      slideNav: 10,
     },
   },
   utils: {},

@@ -12,7 +12,6 @@ export enum IconType {
   Favorite = "favorite",
   Add = "add",
   Delete = "delete",
-  ArrowBack = "arrow_back",
   Star = "star",
   ChevronRight = "chevron_right",
   Logout = "logout",
@@ -23,11 +22,13 @@ export enum IconType {
   FileDownload = "file_download",
   ArrowForward = "arrow_forward",
   ArrowDropDown = "arrow_drop_down",
-  MoreVert = "more_vert",
   Check = "check",
   CreateNewFolder = "create_new_folder",
   FileOpen = "file_open",
   NoteAdd = "note_add",
+  PieChart = "pie_chart",
+  ThumbUp = "thumb_up",
+  Error = "error",
 }
 
-export const allIcons = Object.values(IconType);
+export const allIcons = Object.values(IconType) as string[];

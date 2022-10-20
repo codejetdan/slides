@@ -18,7 +18,7 @@ export const MainMenu: React.FC<MainMenuProps> = () => {
   return (
     <StyledMainMenu>
       <NewProjectButton />
-      <OpenProjectButton />
+      {/* <OpenProjectButton /> */}
     </StyledMainMenu>
   );
 };

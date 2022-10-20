@@ -7,7 +7,7 @@ import { ErrorAlert } from "~/components/ErrorAlert";
 import { Section } from "./Section";
 
 const StyledSlide = styled("div", {
-  padding: "$small $large",
+  padding: "$small $xLarge",
 });
 
 interface SlideProps {
@@ -23,8 +23,14 @@ export const Slide: React.FC<SlideProps> = ({ index }) => {
 
   return (
     <StyledSlide>
-      {slide.sections.map((section) => (
-        <Section key={section.id} slideId={slide.id} sectionId={section.id} />
+      {slide.sections.map(({ id, columns, elements }) => (
+        <Section
+          key={id}
+          slideId={slide.id}
+          id={id}
+          columns={columns}
+          elements={elements}
+        />
       ))}
     </StyledSlide>
   );

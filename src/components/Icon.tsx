@@ -1,12 +1,26 @@
 import { styled } from "~/appStyles";
-import { IconType } from "~/config";
+import { allIcons, IconType } from "~/config";
 
 interface IconProps {
-  name: IconType;
+  name: IconType | string;
 }
 
-const StyledIcon = styled("span", {});
+const StyledIcon = styled("span", {
+  variants: {
+    isValid: {
+      false: {
+        color: "$red500",
+      },
+    },
+  },
+});
 
-export const Icon: React.FC<IconProps> = ({ name }) => (
-  <StyledIcon className="material-icons">{name}</StyledIcon>
-);
+export const Icon: React.FC<IconProps> = ({ name }) => {
+  const isValid = allIcons.includes(name);
+
+  return (
+    <StyledIcon className="material-icons" isValid={isValid}>
+      {isValid ? name : IconType.Error}
+    </StyledIcon>
+  );
+};
